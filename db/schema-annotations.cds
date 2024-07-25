@@ -10,7 +10,3 @@ annotate schema.Klasmeyts{
 annotate schema.Skills{
     ID @(UI.Hidden)
 };
-
-annotate schema.Bosses{
-    ID @(UI.Hidden)
-};

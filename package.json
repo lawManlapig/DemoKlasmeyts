@@ -14,10 +14,16 @@
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^7",
     "@sap/eslint-plugin-cds": "^3",
-    "eslint": "^9"
+    "@sap/ux-specification": "^1.120.15",
+    "eslint": "^9",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-dk-maintenance": "cds watch --open dk-maintenance/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy DemoKlasmeyts --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
     "build": {
@@ -36,5 +42,8 @@
         "kind": "hana-cloud"
       }
     }
-  }
+  },
+  "sapux": [
+    "app/dk-maintenance"
+  ]
 }

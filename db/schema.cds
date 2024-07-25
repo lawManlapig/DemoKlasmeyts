@@ -15,12 +15,9 @@ entity Klasmeyts : managed, cuid { //if you want to add a reusable, follow this 
     lastname  : String;
 
     //Composition = Child entity niya ito.. this cannot exist pag wala yung parent
+    //Association = Associated entity.. this can exist kahit wala yung parent(Di mo pwede lagyan yan sa CRUD in the same app)
     skillset  : Composition of many Skills
                     on skillset.klasmeyt = $self; //pag $self gamit mo, automatic kukunin yung key fields as foreign key nung child
-
-    //Association = Associated entity.. this can exist kahit wala yung parent
-    boss      : Association to one Bosses
-                    on boss.klasmeyt = $self;
 };
 
 //-->Child Entities
@@ -28,9 +25,4 @@ entity Skills : cuid {
     klasmeyt   : Association to Klasmeyts;
     skillname  : String;
     skilllevel : Integer;
-};
-
-entity Bosses : cuid {
-    klasmeyt : Association to Klasmeyts;
-    bossname : String;
 };
